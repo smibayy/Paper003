@@ -206,7 +206,7 @@ C \frac{U_{unconi}}{U_{coni}}, & \frac{U_{coni}}{U_{unconi}} < 1
 where $C$ is a magnification factor of the reward; $U_{coni}$ is the structure response of controlled; $U_{unconi}$ is the structure response of uncontrolled. When $ \frac{U_{coni}}{U_{unconi}} $, the action had not change the structure response. The action had not reduce the structure response, hence, its reward was zero. When $\frac{U_{coni}}{U_{unconi}} > 1$, the action increased the structure response. Hence, its reward (punishment) is $-C \frac{U_{coni}}{U_{unconi}}$. When $\frac{U_{coni}}{U_{unconi}} < 1$, the action decreased the structure response. Hence, its reward is $C \frac{U_{unconi}}{U_{coni}}$. Thus, if an action can reduce more response, it can achieve more reward. In contrary, if an action increased more response, it will obtain more punishment. RL can give its reward according to each action using the reward function. Finally, the optimal action of each step is determined to form the optimal control strategy and realize the optimal control of MR damper.
 
 \subsection{Greedy method}
-The agent can select actions by the exploration and exploitation. When agent use the exploration to select actions, it will select the actions of greatest reward
+The agent can select actions by the exploration and exploitation. When agent use the exploration to select actions, it will select the actions of greatest reward.
 
 To balance exploration and exploitation, the researcher proposed a $\epsilon$-greedy method \citep{}. The $\epsilon$-greedy can be written as
 \begin{equation}
@@ -225,7 +225,7 @@ $\frac{\epsilon}{|A(s)|}$
 \section{Numerical experiment}
 \subsection{Model parameters}
 The performance of the proposed reinforcement learning control algorithm was evaluated in one example through numerical simulation. To demonstrate the proposed control algorithm, a three-story building with a single MR damper was considered. The MR damper was installed in the first floor, as shown in \ref{structure}. The mass $M$, dampering $Cs$ and stiffness $Ks$ matrices are as follows:
-\subsection{Numerical implementation}
+
 \begin{equation}       
 M=\left[                 
   \begin{array}{ccc}   
@@ -258,6 +258,29 @@ Ks=\left[
 \right]     
 \times 10^{8} N/m        
 \end{equation}
+
+\subsection{Numerical implementation}
+\begin{equation}
+R=\left[\begin{array}{ccc}
+{r_{11}} & {\cdots} & {r_{1 n}} \\
+{\vdots} & {\ddots} & {\vdots} \\
+{r_{m 1}} & {\cdots} & {r_{m n}}
+\end{array}\right]
+\end{equation}
+where $r_{mn}$ is the reward of each action, $m$ is the number of the state, $n$ is the number of the action. 
+
+\begin{equation}
+\mathrm{Q}=\left[\begin{array}{ccc}
+{q_{11}} & {\cdots} & {q_{1 n}} \\
+{\vdots} & {\ddots} & {\vdots} \\
+{q_{m 1}} & {\cdots} & {q_{m n}}
+\end{array}\right]
+\end{equation}
+
+where $q_{mn}$ is the 
+
+
+
 \section{Results and Discussions}
 \subsection{The effect of reward function}
 \subsection{The effect of RL parameters}
