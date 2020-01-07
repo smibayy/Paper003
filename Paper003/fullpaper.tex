@@ -183,14 +183,23 @@ where $A$, $\beta$, and $\gamma$ are the Bouc-Wen model parameters.
 
 \section{Reinforcement learning control method}
 
-Reinforcement learning is a type of machine learing that can develop solutions to sequential decision-making problems. Controlling MR dampers in the semi-active control can be modeled as a sequential decision-making proble. RL learns how to act in an environment to maximize a numerical reward signal, representing success at achieving a desired goal. 
+Reinforcement learning is a type of machine learning that can develop solutions to sequential decision-making problems.  RL learns how to act in an environment to maximize a numerical reward signal, representing success at achieving the desired goal. 
 \begin{equation}Q(S_t,A_t) \leftarrow Q(S_t,A_t)+\alpha [R_{t+1} + \gamma max_{a}Q(S_{t+1,a})-Q(S_t,A_t)]\end{equation}
 where $\alpha \in$[0,1] is the learning rate, the ; $\gamma$ $\in$[0,1] is the discount rate. The discount rate determines the present value of future rewards. $A_t$ is the action set. $S_t$ is the state set.
 
+
+Controlling MR dampers in the semi-active control can be modeled as a sequential decision-making problem. 
+\begin{figure}[!h]
+\centering
+{\includegraphics[width=1.0\textwidth]{interaction.jpg}} 
+\caption{The framework of reinforcement learning for the semi-active control of MR dampers.} 
+\label{interaction} 
+\end{figure} 
 \subsection{Action}
 
-In this study, we control the current of a MR damper to change its damping force. Hence, we selected the inputing the current for the MR damper as the action of the agent $A_i$. 
-\subsection{Reward}
+In this study, we control the current of the MR damper to change its damping force. Hence, we selected the inputting the current for the MR damper as the action of an agent $A_i$. 
+
+\subsection{Reward function}
 
 In this study, the reward was defined in
 
