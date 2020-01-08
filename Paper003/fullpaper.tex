@@ -183,23 +183,33 @@ where $A$, $\beta$, and $\gamma$ are the Bouc-Wen model parameters.
 
 \section{Reinforcement learning control method}
 
-Reinforcement learning is a type of machine learning that can develop solutions to sequential decision-making problems.  RL learns how to act in an environment to maximize a numerical reward signal, representing success at achieving the desired goal. 
+Reinforcement learning is a type of machine learning that can solve sequential decision problems. RL can learn from interaction with an unknown environment to achieve long-term goals \citep{sutton}. The agent-environment interaction in RL is shown in \reffig{interaction}(a). More specifically, the agent and environment interact at each of a sequence of discrete time steps, $t$. The agent observes the state of environment, $s_t \in S$ at each time step, $t$, and then selects an action, $a_t \in A$. After the action selection, the agent obtains a reward $r_{t+1} \in R$, and transits a new state, $s_{t+1}$. 
+
+The goal of agent is to achieve an optimal policy $\pi^*$ that maximize the sum of discounted rewards $G_t$ as follows:
+\begin{equation}
+G_{t}=R_{t+1}+\gamma R_{t+2}+\gamma^2 R_{t+2}+\cdots=\sum_{k=0}^{\infty} \gamma^{k} R_{t+k+1}
+\end{equation}
+where $\gamma \in [0,1]$ is called discounted rate, which influences present value of future rewards. 
+
+
 \begin{equation}Q(S_t,A_t) \leftarrow Q(S_t,A_t)+\alpha [R_{t+1} + \gamma max_{a}Q(S_{t+1,a})-Q(S_t,A_t)]\end{equation}
 where $\alpha \in$[0,1] is the learning rate, the ; $\gamma$ $\in$[0,1] is the discount rate. The discount rate determines the present value of future rewards. $A_t$ is the action set. $S_t$ is the state set.
 
 
-Controlling MR dampers in the semi-active control can be modeled as a sequential decision-making problem. 
+Similarly, controlling MR dampers in the semi-active control can be modeled as a sequential decision problem. 
+
 \begin{figure}[!h]
 \centering
 {\includegraphics[width=1.0\textwidth]{interaction.jpg}} 
-\caption{The framework of reinforcement learning for the semi-active control of MR dampers.} 
+\caption{Agent-environment interaction in reinforcement learning.} 
 \label{interaction} 
 \end{figure} 
 \subsection{Action}
 
-In this study, we control the current of the MR damper to change its damping force. Hence, we selected the inputting the current for the MR damper as the action of an agent $A_i$. 
+In this study, we control the current $I$ of the MR damper to change its damping force. The maximum working current of MR damper which is used in this study is 1.0 A. Hence, we selected the inputting the current for the MR damper as the actions of an agent $A_i=\{0.1I, 0.2I, 0.3I, 0.4I, 0.5I, 0.6I, 0.7I, 0.8I, 0.9I, 1.0I\}$. 
 
 \subsection{Reward function}
+
 
 In this study, the reward was defined in
 
